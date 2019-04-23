@@ -20,11 +20,11 @@
         <property name="hibernate.hbm2ddl.import_files">aficiones.sql</property>
         
         <!-- Mapeo de entidades -->
-        <mapping class="es.jaa.hibernate.modelo.Persona"/>
-        <mapping class="es.jaa.hibernate.modelo.Usuario"/>
-        <mapping class="es.jaa.hibernate.modelo.Direccion"/>
-        <mapping class="es.jaa.hibernate.modelo.Email"/>
-        <mapping class="es.jaa.hibernate.modelo.Aficion"/>
+        <mapping class="es.aytos.HibernateDual.modelo.Persona"/>
+<!--         <mapping class="es.jaa.hibernate.modelo.Usuario"/> -->
+<!--         <mapping class="es.jaa.hibernate.modelo.Direccion"/> -->
+<!--         <mapping class="es.jaa.hibernate.modelo.Email"/> -->
+<!--         <mapping class="es.jaa.hibernate.modelo.Aficion"/> -->
         
     </session-factory>
 </hibernate-configuration>
