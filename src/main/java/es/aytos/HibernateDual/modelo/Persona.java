@@ -1,17 +1,29 @@
 package es.aytos.HibernateDual.modelo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity(name = "persona")
 public class Persona implements Serializable {
 
 	@Id
-
+	@GeneratedValue
+	@Column(name = "idPersona")
 	private Integer id;
 
 	private String nombre;
@@ -20,12 +32,34 @@ public class Persona implements Serializable {
 
 	private String nif;
 
-	private Date fechaNacimiento;
+	private LocalDate fechaNacimiento;
 
 	@Enumerated
 	private EstadoCivil estadoCivil;
 
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "persona")
+	private List<Direccion> direcciones;
+
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idAficion")
+	private List<Aficion> aficiones;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+
 	public Persona() {
+	}
+
+	public Persona(String nombre, String apellidos, String nif, LocalDate fechaNacimiento, EstadoCivil estadoCivil) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.nif = nif;
+		this.fechaNacimiento = fechaNacimiento;
+		this.estadoCivil = estadoCivil;
+
 	}
 
 	public Integer getId() {
@@ -60,11 +94,11 @@ public class Persona implements Serializable {
 		this.nif = nif;
 	}
 
-	public Date getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -74,6 +108,30 @@ public class Persona implements Serializable {
 
 	public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil = estadoCivil;
+	}
+
+	public List<Direccion> getDirecciones() {
+		return direcciones;
+	}
+
+	public void setDirecciones(List<Direccion> direcciones) {
+		this.direcciones = direcciones;
+	}
+
+	public List<Aficion> getAficiones() {
+		return aficiones;
+	}
+
+	public void setAficiones(List<Aficion> aficiones) {
+		this.aficiones = aficiones;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

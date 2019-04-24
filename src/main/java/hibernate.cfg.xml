@@ -8,7 +8,7 @@
         <property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:jtds:sqlserver://localhost:1433/HibernateDual;instance=SQLEXPRESS</property>
         <property name="hibernate.connection.username">sa</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.password">Temporal22</property>
         <property name="hibernate.connection.pool_size">2</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
@@ -16,15 +16,15 @@
         <property name="hibernate.cache.use_query_cache">true</property>
         <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.JCacheRegionFactory</property>
         <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.hbm2ddl.import_files">aficiones.sql</property>
+<!--         <property name="hibernate.hbm2ddl.auto">update</property> -->
+<!--         <property name="hibernate.hbm2ddl.import_files">aficiones.sql</property> -->
         
         <!-- Mapeo de entidades -->
         <mapping class="es.aytos.HibernateDual.modelo.Persona"/>
-<!--         <mapping class="es.jaa.hibernate.modelo.Usuario"/> -->
-<!--         <mapping class="es.jaa.hibernate.modelo.Direccion"/> -->
+        <mapping class="es.aytos.HibernateDual.modelo.Direccion"/>
+        <mapping class="es.aytos.HibernateDual.modelo.Aficion"/>
+        <mapping class="es.aytos.HibernateDual.modelo.Usuario"/>
 <!--         <mapping class="es.jaa.hibernate.modelo.Email"/> -->
-<!--         <mapping class="es.jaa.hibernate.modelo.Aficion"/> -->
         
     </session-factory>
 </hibernate-configuration>
