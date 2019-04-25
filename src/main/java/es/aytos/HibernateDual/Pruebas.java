@@ -21,7 +21,7 @@ public class Pruebas {
 		// final Integer idPersona = RepositorioPersona.crearPersona(persona2);
 		// System.out.println("Se ha creado la persona con id: " + idPersona);
 
-		// final Persona persona = RepositorioPersona.getPersona(2);
+		final Persona persona = RepositorioPersona.getPersona(2);
 		// System.out.println(
 		// "Persona con id" + persona.getId() + ": " + persona.getNombre() + " " +
 		// persona.getApellidos());
@@ -51,8 +51,8 @@ public class Pruebas {
 		// persona1.getAficiones().stream().forEach(a ->
 		// System.out.print(a.getDescripcion() + " "));
 
-		final Integer idPersona = crearPersona();
-		System.out.println("Se ha creado la persona");
+		// final Integer idPersona = crearPersona();
+		// System.out.println("Se ha creado la persona con id " + idPersona);
 
 	}
 
@@ -79,17 +79,19 @@ public class Pruebas {
 		direccion2.setDireccion("Plaza Blas Infante, 1");
 		direccion2.setProvincia(Provincia.SEVILLA);
 
-		persona.setDirecciones(Arrays.asList(direccion1, direccion2));
+		// persona.setDirecciones(Arrays.asList(direccion1, direccion2));
 
 		// 3. Creacion aficiones
 
 		Aficion aficion1 = new Aficion();
 		aficion1.setIdAficion(1);
+		aficion1.setDescripcion("Programación");
 
 		Aficion aficion2 = new Aficion();
 		aficion2.setIdAficion(5);
+		aficion2.setDescripcion("Música");
 
-		persona.setAficiones(Arrays.asList(aficion1, aficion2));
+		// persona.setAficiones(Arrays.asList(aficion1, aficion2));
 
 		// 4. Creacion usuario
 
@@ -97,9 +99,10 @@ public class Pruebas {
 		usuario.setContraseña("1234");
 		usuario.setEmail("email@gmail.com");
 
-		persona.setUsuario(usuario);
+		// persona.setUsuario(usuario);
 
-		return RepositorioPersona.crearPersona(persona);
+		return RepositorioPersona.crearPersona(persona, usuario, Arrays.asList(direccion1, direccion2),
+				Arrays.asList(aficion1, aficion2));
 
 	}
 

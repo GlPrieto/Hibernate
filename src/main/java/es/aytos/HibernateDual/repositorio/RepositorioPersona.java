@@ -4,16 +4,28 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import es.aytos.HibernateDual.modelo.Aficion;
+import es.aytos.HibernateDual.modelo.Direccion;
 import es.aytos.HibernateDual.modelo.Persona;
+import es.aytos.HibernateDual.modelo.Usuario;
 import es.aytos.HibernateDual.util.HibernateUtil;
 
 public class RepositorioPersona {
 
-	public static Integer crearPersona(final Persona persona) {
+	public static Integer crearPersona(final Persona persona, final Usuario usuario, List<Direccion> direcciones,
+			List<Aficion> aficiones) {
 		Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			sesion.beginTransaction();
 			final Integer personaBBDD = (Integer) sesion.save(persona);
+
+			persona.setId(personaBBDD);
+			persona.setUsuario(usuario);
+			usuario.setPersona(persona);
+			// sesion.flush
+			persona.setDirecciones(direcciones);
+			direcciones.stream().forEach(d -> d.setPersona(persona));
+			persona.setAficiones(aficiones);
 			sesion.getTransaction().commit();
 			return personaBBDD;
 		} catch (Exception e) {
