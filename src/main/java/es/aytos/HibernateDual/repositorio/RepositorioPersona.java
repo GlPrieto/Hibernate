@@ -73,4 +73,56 @@ public class RepositorioPersona {
 		}
 	}
 
+	public static void actualizarPersona(final Integer idPersona, final String nif) {
+
+		Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			sesion.beginTransaction();
+			final Persona persona = (Persona) sesion.createQuery("from persona where idPersona = :idPersona")
+					.setParameter("idPersona", idPersona).uniqueResult();
+			persona.setNif(nif);
+			// Actualizar persona
+
+			// sesion.createQuery("Update persona set nif = :nif where idPersona =
+			// :idPersona").setParameter("nif", nif)
+			// .setParameter("idPersona", idPersona).executeUpdate();
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+
+			sesion.getTransaction().rollback();
+			System.out.println("Se ha producido un error actualizando la persona");
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			sesion.close();
+		}
+	}
+
+	// public static void eliminarPersona(final Integer idPersona) {
+	//
+	// Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+	//
+	// try {
+	// sesion.beginTransaction();
+	// final Persona persona = (Persona) sesion.createQuery("from persona where
+	// idPersona = :idPersona")
+	// .setParameter("idPersona", idPersona).uniqueResult();
+	//
+	// // sesion.createQuery("delete from Usuario whereUpdate persona set nif = :nif
+	// // where idPersona =
+	// // :idPersona").setParameter("nif", nif)
+	// // .setParameter("idPersona", idPersona).executeUpdate();
+	// sesion.getTransaction().commit();
+	// } catch (Exception e) {
+	//
+	// sesion.getTransaction().rollback();
+	// System.out.println("Se ha producido un error actualizando la persona");
+	// e.printStackTrace();
+	// throw new RuntimeException(e);
+	// } finally {
+	// sesion.close();
+	// }
+	// }
+
 }

@@ -6,7 +6,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:jtds:sqlserver://localhost:1433/HibernateDualImportSQL;instance=SQLEXPRESS</property>
+        <property name="hibernate.connection.url">jdbc:jtds:sqlserver://localhost:1433/HibernateDual;instance=SQLEXPRESS</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password">Temporal22</property>
         <property name="hibernate.connection.pool_size">2</property>
@@ -16,7 +16,7 @@
         <property name="hibernate.cache.use_query_cache">true</property>
         <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.JCacheRegionFactory</property>
         <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+<!--         <property name="hibernate.hbm2ddl.auto">create</property> -->
 <!--         <property name="hibernate.hbm2ddl.auto">update</property> -->
         <property name="hibernate.hbm2ddl.import_files">aficiones.sql</property>
         

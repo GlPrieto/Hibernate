@@ -21,7 +21,7 @@ public class Pruebas {
 		// final Integer idPersona = RepositorioPersona.crearPersona(persona2);
 		// System.out.println("Se ha creado la persona con id: " + idPersona);
 
-		final Persona persona = RepositorioPersona.getPersona(2);
+		// final Persona persona = RepositorioPersona.getPersona(2);
 		// System.out.println(
 		// "Persona con id" + persona.getId() + ": " + persona.getNombre() + " " +
 		// persona.getApellidos());
@@ -53,6 +53,8 @@ public class Pruebas {
 
 		// final Integer idPersona = crearPersona();
 		// System.out.println("Se ha creado la persona con id " + idPersona);
+
+		actualizarPersona(36, "23488877G");
 
 	}
 
@@ -104,6 +106,11 @@ public class Pruebas {
 		return RepositorioPersona.crearPersona(persona, usuario, Arrays.asList(direccion1, direccion2),
 				Arrays.asList(aficion1, aficion2));
 
+	}
+
+	public static void actualizarPersona(final Integer idPersona, final String nif) {
+
+		RepositorioPersona.actualizarPersona(idPersona, nif);
 	}
 
 }
