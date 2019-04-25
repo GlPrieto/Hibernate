@@ -54,8 +54,9 @@ public class Pruebas {
 		// final Integer idPersona = crearPersona();
 		// System.out.println("Se ha creado la persona con id " + idPersona);
 
-		actualizarPersona(36, "23488877G");
-
+		// actualizarPersona(36, "23488877G");
+		// getPersona(36);
+		eliminarPersona(36);
 	}
 
 	public static Integer crearPersona() {
@@ -111,6 +112,16 @@ public class Pruebas {
 	public static void actualizarPersona(final Integer idPersona, final String nif) {
 
 		RepositorioPersona.actualizarPersona(idPersona, nif);
+	}
+
+	public static void getPersona(final Integer idPersona) {
+
+		RepositorioPersona.getPersona(idPersona);
+	}
+
+	public static void eliminarPersona(final Integer idPersona) {
+
+		RepositorioPersona.eliminarPersona(idPersona);
 	}
 
 }
